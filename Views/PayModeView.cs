@@ -33,40 +33,40 @@ namespace Supermarket_mvp_2.Views
             };
         }
 
-        public string PayModeId 
-        { 
+        public string PayModeId
+        {
             get { return TxtPayModeId.Text; }
-            set { TxtPayModeId.Text = value;}
+            set { TxtPayModeId.Text = value; }
         }
-        public string PayModeName 
+        public string PayModeName
         {
             get { return TxtPayModeName.Text; }
-            set { TxtPayModeName.Text = value;}
+            set { TxtPayModeName.Text = value; }
         }
-        public string PayModeObservation 
-        { 
+        public string PayModeObservation
+        {
             get { return TxtPayModeObservation.Text; }
-            set { TxtPayModeObservation.Text = value;}
+            set { TxtPayModeObservation.Text = value; }
         }
         public string SearchValue
         {
             get { return TxtSearch.Text; }
-            set { TxtSearch.Text = value;}
+            set { TxtSearch.Text = value; }
         }
-        public bool IsEdit 
-        { 
+        public bool IsEdit
+        {
             get { return IsEdit; }
-            set { IsEdit = value;}
+            set { IsEdit = value; }
         }
-        public bool IsSuccessful 
-        { 
+        public bool IsSuccessful
+        {
             get { return IsSuccessful; }
-            set { IsSuccessful = value;}
+            set { IsSuccessful = value; }
         }
-        public string Message 
-        { 
+        public string Message
+        {
             get { return Message; }
-            set { Message = value;}
+            set { Message = value; }
         }
 
         public event EventHandler SearchEvent;
@@ -81,10 +81,24 @@ namespace Supermarket_mvp_2.Views
             DgPayMode.DataSource = payModeList;
         }
 
+        private static PayModeView instance;
 
-        private void label1_Click(object sender, EventArgs e)
+        public static PayModeView GetInstance() 
         {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new PayModeView();
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
 
+            return instance;
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iE4yDlPKx6xJ0CymHSVrxLzPm8rE2k0J6pLZZMG1aCQCuVj1SZ6G8V4HIGHWoAd/7qNHNdsYbzJkH5XmJXtdtg==",
+  "dgSpecHash": "KuDNtzesZl9oU0vENTjGk2370IXAmJIdRthXJsAK7adrNtfdQFYNS8OAJb0oxzSVGYwISWwuSUu3WrertuB13w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dionny Alejandro\\Desktop\\Lenguaje Informatico\\Supermarket-mvp_2\\Supermarket-mvp_2\\Supermarket-mvp_2.csproj",
+  "projectFilePath": "C:\\Users\\Dionny Alejandro\\Desktop\\Lenguaje Informatico\\Supermarket-mvp_2\\Supermarket-mvp_2\\Supermarket-mvp_2_.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dionny Alejandro\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Dionny Alejandro\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
