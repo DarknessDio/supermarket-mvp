@@ -33,6 +33,66 @@ namespace Supermarket_mvp_2.Views
                     SearchEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
+
+            BtnEdit.Click += delegate { EditEvent?.Invoke(this, EventArgs.Empty); };
+            BtnDelete.Click += delegate { DeleteEvent?.Invoke(this, EventArgs.Empty); };
+            BtnSave.Click += delegate { SaveEvent?.Invoke(this, EventArgs.Empty); };
+            BtnCancel.Click += delegate { CancelEvent?.Invoke(this, EventArgs.Empty); };
+
+            BtnNew.Click += delegate
+            {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPagePayModeList);
+                tabControl1.TabPages.Add(tabPagePayModeDetail);
+                tabPagePayModeDetail.Text = "Add New Pay Mode";
+
+            };
+
+            BtnEdit.Click += delegate
+            {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPagePayModeList);
+                tabControl1.TabPages.Add(tabPagePayModeDetail);
+                tabPagePayModeDetail.Text = "Edit Pay Mode";
+
+            };
+
+            BtnSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+
+                if (IsSuccessful)
+                {
+                    tabControl1.TabPages.Remove(tabPagePayModeDetail);
+                    tabControl1.TabPages.Add(tabPagePayModeList);
+                }
+                MessageBox.Show(Message);
+            };
+
+            BtnCancel.Click += delegate
+            {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPagePayModeDetail);
+                tabControl1.TabPages.Add(tabPagePayModeList);
+
+            };
+
+            BtnDelete.Click += delegate
+            {
+                var result = MessageBox.Show(
+                    "Are you sure you want to delete the selected Pay Mode",
+                    "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+            };
         }
 
         public string PayModeId
@@ -55,20 +115,30 @@ namespace Supermarket_mvp_2.Views
             get { return TxtSearch.Text; }
             set { TxtSearch.Text = value; }
         }
+
+        private bool isEdit; //El error se econtraba en que haría falta una variable de respaldo como isEdit.
         public bool IsEdit
         {
-            get { return IsEdit; }
-            set { IsEdit = value; }
+            //Obtengo un error justo debajo de este comentario, sinceramente no sé a que se deba.
+            //El programa me arroja 0 errores.
+            //El error era una recursión infinita. Error solucionado.
+
+            get { return isEdit; }
+            set { isEdit = value; }
         }
+
+        private bool isSuccessful; //Variable de respaldo para IsSuccessful.
         public bool IsSuccessful
         {
-            get { return IsSuccessful; }
-            set { IsSuccessful = value; }
+            get { return isSuccessful; }
+            set { isSuccessful = value; }
         }
+
+        private string message; //Variable de respaldo para Message.
         public string Message
         {
-            get { return Message; }
-            set { Message = value; }
+            get { return message; }
+            set { message = value; }
         }
 
         public event EventHandler SearchEvent;
