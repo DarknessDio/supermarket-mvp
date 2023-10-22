@@ -24,7 +24,7 @@ namespace Supermarket_mvp_2.Presenters
 
         private void ShowPayModeView(object? sender, EventArgs e)
         {
-            IPayModeView view = PayModeView.GetInstance();
+            IPayModeView view = PayModeView.GetInstance((MainView)mainView);
             //IPayModeView view = new PayModeView();
             IPayModeRepository repository = new PayModeRepository(sqlConnectionString);
             new PayModePresenter(view, repository);
