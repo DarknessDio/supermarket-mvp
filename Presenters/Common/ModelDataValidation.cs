@@ -16,7 +16,7 @@ namespace Supermarket_mvp_2.Presenters.Common
             ValidationContext validationContext = new ValidationContext(model);
             bool isValid = Validator.TryValidateObject(
                 model, validationContext, validationResults, true);
-            if (isValid) 
+            if (isValid == false) 
             {
                 foreach (var item in validationResults)
                 {
